@@ -6,8 +6,8 @@ import { QAttack } from './champions.interface'
 export class ChampionsController {
   constructor(private readonly championService: ChampionService) {}
 
-  @Post(':id/move')
-  async qAttack(@Param('id') id: string, @Body() qAttack: QAttack) {
-    await this.championService.qAttack(id, qAttack);
+  @Post(':id/move/:victimId')
+  async qAttack(@Param('id') id: string,  @Param('victimId') victimId: string, @Body() qAttack: QAttack) {
+    await this.championService.qAttack(id, qAttack, victimId);
   }
 }

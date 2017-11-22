@@ -9,7 +9,7 @@ export class ChampionService {
 
   async qAttack(championId: string, qAttack: QAttack) {
     return await this.commandBus.execute(
-      new QAttackCommand(championId, qAttack.qName)
+      new QAttackCommand(championId, qAttack.qName, qAttack.victimId)
     );
   }
 

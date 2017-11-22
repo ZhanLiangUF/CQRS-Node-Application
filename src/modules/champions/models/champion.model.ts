@@ -6,8 +6,8 @@ export class Champion extends AggregateRoot {
         super();
     }
 
-    qAttack(name: string) {
-        this.apply(new QAttackEvent(this.id, name));
+    qAttack(name: string, victimId: string) {
+        this.apply(new QAttackEvent(this.id, name, victimId));
     }
 
     wAttack(name: string) {
@@ -20,5 +20,9 @@ export class Champion extends AggregateRoot {
 
     rAttack(name: string) {
 
+    }
+
+    subtractHealth(damageDealt: string) {
+        this.apply(new DamageDealtEvent(this.id, damageDealt))
     }
 }

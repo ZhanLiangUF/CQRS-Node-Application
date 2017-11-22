@@ -4,5 +4,6 @@ export class QAttackEvent implements IEvent {
     constructor(
         public readonly championId: string,
         public readonly moveName: string,
+        public readonly victimId: string
     ) {}
 }

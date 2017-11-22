@@ -12,11 +12,12 @@ export class QAttackHandler implements ICommandHandler<QAttackCommand>  {
 
   async execute(command: QAttackCommand , resolve: (value?) => void) {
       // destructure
-      const { championId, moveName } = command;
+      const { championId, moveName, victimId } = command;
       const champion = this.publisher.mergeObjectContext(
         await this.repository.findOneById(championId),
       );
-      champion.qAttack(moveName);
+      champion.qAttack(moveName, victimId);
+      // moment of dispatch
       champion.commit();
       resolve();
   }
